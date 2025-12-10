@@ -147,6 +147,7 @@ addMessage = async (
 loadMessages = () => {
   // Create the query to load the last 12 messages and listen for new ones.
   const recentMessagesQuery = query(collection(this.firestore, 'messages'), orderBy('timestamp', 'desc'), limit(12));
+  console.log('Loading messages with query: ', recentMessagesQuery);
   // Start listening to the query.
   return collectionData(recentMessagesQuery);
 }
