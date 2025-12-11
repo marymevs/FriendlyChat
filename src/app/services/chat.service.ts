@@ -148,7 +148,7 @@ loadMessages = () => {
   // Create the query to load the last 12 messages and listen for new ones.
   const recentMessagesQuery = query(collection(this.firestore, 'messages'), orderBy('timestamp', 'desc'), limit(12));
   // Start listening to the query.
-  return collectionData(recentMessagesQuery);
+  return collectionData(recentMessagesQuery).pipe(map((messages: any[]) => messages.slice().reverse()));
 }
 
 // Saves a new message containing an image in Firestore.
